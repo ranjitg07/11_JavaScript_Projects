@@ -24,7 +24,6 @@ a:hover{
     min-height: 100vh;
     display: grid;
     grid-template-columns: 23rem 1fr;
-    /* gap: 2rem; */
     background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 }
 
@@ -45,7 +44,6 @@ a:hover{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* justify-content: center; */
     font-weight: 600;
 }
 
