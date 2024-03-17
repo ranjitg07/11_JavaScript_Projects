@@ -53,6 +53,15 @@ function calculateBMI(){
 
 // Copy Clipboard Script
 
+function copyText() {
+  let textToCopy = document.getElementById("textToCopy").value;
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    alert('Copied to clipboard');
+  }).catch((error) => {
+    console.error('Unable to copy text: ', error);
+  });
+}
+
 
 // Quote-Generator Script
 
