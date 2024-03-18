@@ -56,11 +56,19 @@ function calculateBMI(){
 function copyText() {
   let textToCopy = document.getElementById("textToCopy").value;
   navigator.clipboard.writeText(textToCopy).then(() => {
-    alert('Copied to clipboard');
+      let copiedMsg = document.getElementById('copiedMsg');
+      copiedMsg.innerText = 'Copied to clipboard';
+      copiedMsg.style.paddingTop = '20px';
+      document.getElementById("textToCopy").value = '';
   }).catch((error) => {
-    console.error('Unable to copy text: ', error);
+      console.error('Unable to copy text: ', error);
   });
 }
+
+document.getElementById('textToCopy').addEventListener('input', function() {
+  document.getElementById('copiedMsg').innerText = '';
+  copiedMsg.style.paddingTop = '';
+});
 
 
 // Quote-Generator Script

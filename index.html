@@ -113,10 +113,18 @@
             <h1>Copy To Clipboard</h1>
             <section class="copy-section">
               <div class="copy-container">
-                <input type="text" id="textToCopy" class="copyInput" placeholder="Enter text to copy">
-                <button class="copy-btn" onclick="copyText()">
-                  <i class="fa-solid fa-copy"></i>
-                </button>
+
+                <div class="copy-div">
+                  <input type="text" id="textToCopy" class="copyInput" placeholder="Enter text to copy">
+                  <button class="copy-btn" onclick="copyText()">
+                    <i class="fa-solid fa-copy"></i>
+                  </button>
+                </div>
+
+                <div class="copiedMsg">
+                  <h3 id="copiedMsg"></h3>
+                </div>
+                
               </div>
             </section>
           </main>
