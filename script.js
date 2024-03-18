@@ -73,6 +73,26 @@ document.getElementById('textToCopy').addEventListener('input', function() {
 
 // Quote-Generator Script
 
+let quoteShown = document.querySelector('.quote');
+let generateQuote = document.querySelector('.quoteBtn');
+let Author = document.querySelector('.author');
+let num = 0;
+let quote = [];
+
+fetch('https://type.fit/api/quotes')
+.then(response => {
+  return response.json();
+}).then(data => {
+  quote = data;
+}).catch(err => {
+  console.log('fetch error:', err);
+})
+
+generateQuote.addEventListener('click', () =>{
+  num++;
+  quoteShown.innerText = quote[num].text;
+  Author.innerText = '~' + quote[num].author;
+})
 
 // Password-Generator Script
 
