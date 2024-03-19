@@ -69,7 +69,7 @@ a:hover{
 .right-content h1{
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 /* ---------------------------- */
@@ -288,7 +288,71 @@ a:hover{
 
 /* Password-Generator Section*/
 
+.password-section{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.password-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: rgb(0, 0, 0);   
+    text-align: center;
+    min-width: 400px;
+    margin: 90px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pass-header h1{
+    padding-bottom: 1.5rem;
+    color: white;
+}
+
+#passOutput{
+    width: 100%;
+    background-color: #fff959;
+    padding: 25px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+
+}
+
+.btnPass{
+    background-color: #ff41ff;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#generatePass{
+    background-color: #23f3f7;
+}
+
+.btnPass i{
+    padding-right: 10px;
+    font-size: 1.2rem;
+}
+
+#copiedPass{
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}
 
 /* ------------------------------ */
 

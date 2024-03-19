@@ -152,7 +152,21 @@
             <h1>Password - Generator</h1>
             <section class="password-section">
               <div class="password-container">
+
+                <div class="pass-header">
+                  <h1>Password Generator</h1>
+                  <div id="passOutput"></div>
+                </div>
+
+                <div class="btn-container">
+                  <button id="copyPass" class="btnPass" onclick="copyPassword()"><i class="fa-solid fa-copy"></i>Copy Password</button>
+                  <button id="generatePass" class="btnPass" onclick="generatePassword()"><i class="fa-solid fa-lock"></i>Generate Password</button>
+                </div>
                 
+                <div class="copiedMsg">
+                  <h3 id="copiedPass"></h3>
+                </div>
+
               </div>
             </section>
           </main>

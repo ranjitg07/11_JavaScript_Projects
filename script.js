@@ -96,6 +96,31 @@ generateQuote.addEventListener('click', () =>{
 
 // Password-Generator Script
 
+function generatePassword(){
+  let char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+  let password = "";
+  for(let i = 0; i < 12; i++){
+    let random = Math.floor( Math.random() * char.length ) ;
+    password += char[random];
+  }
+  document.getElementById('passOutput').textContent = password;
+}
+
+function copyPassword() {
+  let textCopy = document.getElementById("passOutput").innerText;
+  navigator.clipboard.writeText(textCopy).then(() => {
+    let copyMsg = document.getElementById('copiedPass');
+    copyMsg.innerText = 'Copied to clipboard';
+    copyMsg.style.display = 'block';
+    copyMsg.style.paddingTop = '20px';
+    setTimeout(() => { // Clear the message after 2 seconds
+      copyMsg.style.display = 'none';
+    }, 2000);
+  }).catch((error) => {
+    console.error('Unable to copy text: ', error);
+  });
+}
+
 
 // Digital-Clock Script
 
