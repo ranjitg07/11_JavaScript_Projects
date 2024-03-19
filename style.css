@@ -59,9 +59,9 @@ a:hover{
 /* right content main */
 
 .right-content{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 1; */
     padding: 2rem;
     height: 100vh;
 }
@@ -355,8 +355,84 @@ a:hover{
 /* ------------------------------ */
 
 /* Digital-Clock Section*/
+/* #clock{
+    background: linear-gradient(45deg, #08001f, #30197d);
+} */
+.clock-container{
+    position: relative;
+    display: flex;
+    /* justify-content: center; either use this or margin: 90px auto; */
+    align-items: center;
+    height: 75vh;
+}
 
+.clock{
+    display: flex;
+    justify-content: center;
+    background: rgba(235, 0, 255, 0.11);
+    min-width: 500px;
+    margin: 90px auto;
+    padding: 30px;
+    padding-bottom: 60px;
+    border-radius: 10px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: 2;
+}
 
+.clock span{
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: 600;
+    width: 90px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.clock span::after {
+    font-size: 16px;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#hrs::after {
+    content: 'HOURS';
+}
+
+#min::after {
+    content: 'MINS';
+}
+
+#sec::after {
+    content: 'SEC';
+}
+
+.clock-container::before{
+    content: '';
+    width: 160px;
+    height: 160px;
+    background: #f41b75;
+    border-radius: 5px;
+    position: absolute;
+    left: 230px;
+    top: 165px;
+    z-index: 1;
+}
+
+.clock-container::after{
+    content: '';
+    width: 150px;
+    height: 150px;
+    background: #419aff;
+    border-radius: 50%;
+    position: absolute;
+    right: 240px;
+    bottom: 165px;
+    z-index: 1;
+}
 
 /* ------------------------------ */
 
