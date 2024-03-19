@@ -312,14 +312,12 @@ a:hover{
     color: white;
 }
 
-#passOutput{
+.passHeader{
     width: 100%;
     background-color: #fff959;
     padding: 25px;
     border: 2px solid #ffffff;
     border-radius: 5px;
-    font-size: 1rem;
-    text-align: center;
 }
 
 .btn-container{
