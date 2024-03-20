@@ -137,11 +137,50 @@ setInterval(() => {
 
 // QR-Code Script
 
+let qrText = document.getElementById('qr-input');
+let qrSizes =  document.getElementById('sizes');
+let generateQrBtn = document.getElementById('qrGenerateBtn');
+let downlaodQrBtn = document.getElementById('qrdownloadBtn');
+
+let qrContainer = document.querySelector('.qr-body');
+
+generateQrBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  qrText.value.length > 0 ? generateQrCode() : alert('Enter the text or URL to generate the QR Code');
+})
+
+function generateQrCode() {
+  qrContainer.innerHTML = "";
+  new QRCode(qrContainer, {
+    text: qrText.value,
+    width: qrSizes.value,
+    height: qrSizes.value,
+    colorLight: "#fff",
+    colorDark: "#000"
+  })
+}
+
+downlaodQrBtn.addEventListener('click', (e) => {
+  let qrImg = document.querySelector('.qr-body img')
+
+  if(qrImg !== null){
+    let imgAttr = qrImg.getAttribute('src');
+    downlaodQrBtn.setAttribute("href", imgAttr);
+  } else{
+    // downlaodQrBtn.setAttribute("href", `${document.querySelector('canvas').toDataURL()}`);
+    
+    alert('Please generate a QR code first.');
+    e.preventDefault();
+  }
+})
+
 
 // Drawing-App Script
 
 
+
 // Weather-App Script
+
 
 
 // Recipe-Finder Script

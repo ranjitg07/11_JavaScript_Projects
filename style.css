@@ -11,16 +11,6 @@ li{
     list-style: none;
 }
 
-a{
-    color: white;
-    text-decoration: none;
-}
-
-a:hover{
-    border-bottom: 2px solid #d53369;
-    color: #e6ff05;
-}
-
 .main-container{
     width: 100%;
     min-height: 100vh;
@@ -52,6 +42,16 @@ a:hover{
 .nav-list li{
     border-left: 2px solid #01bbff;
     padding: 0 1rem;
+}
+
+.nav-list li a{
+    color: white;
+    text-decoration: none;
+}
+
+.nav-list li a:hover{
+    border-bottom: 2px solid #d53369;
+    color: #e6ff05;
 }
 
 /* --------------------------- */
@@ -438,6 +438,121 @@ a:hover{
 
 /* QR-Code Section*/
 
+.qrcode-section{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qrcode-container{
+    display: flex;
+    flex-direction: column;
+    /* gap: 1.5rem; */
+    background: rgba(255, 255, 255, 0.11);
+    text-align: center;
+    min-width: 400px;
+    margin: 90px auto;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: 2;
+}
+
+.qr-header h1{
+    padding-bottom: 1.5rem;
+}
+
+#qr-input{
+    width: 100%;
+    background-color: #fff959;
+    padding: 15px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#qr-input::placeholder{
+    font-size: 1rem;
+}
+
+#qr-input:focus{
+    outline: none
+}
+
+.qrSize-options{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.qrSize-options label{
+    text-align: center;
+    padding: 5px;
+}
+
+#sizes{
+    background-color: #ffffff20;
+    padding: 5px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    font-size: .9rem;
+    font-weight: 600;
+    color: rgb(7, 7, 7);
+}
+
+#sizes:focus{
+    outline: none;
+}
+
+.qr-body{
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.qr-body img{
+    max-width: 100%;
+    max-height: 100%;
+    padding: 20px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+}
+
+#qrGenerateBtn, #qrdownloadBtn{
+    text-decoration: none;
+    color: black;
+    background-color: #ff41ff;
+    padding: 12px;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#qrGenerateBtn:hover{
+    background-color: #fb79fb;
+}
+
+#qrdownloadBtn:hover{
+    background-color: #a2ffff;
+}
+
+#qrdownloadBtn{
+    background-color: #00fcfc;
+}
+
+.qr-footer{
+    padding: 20px;
+}
 
 
 /* ------------------------------ */
