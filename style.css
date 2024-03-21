@@ -566,7 +566,7 @@ li{
 /* Drawing-App Section*/
 
 .drawing-section{
-    height: 70vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -582,6 +582,33 @@ canvas{
     border: 2px solid white;
 }
 
+#clearCanvas, #saveCanvas{
+    text-decoration: none;
+    color: black;
+    background-color: #ff41ff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#clearCanvas:hover{
+    background-color: #000000;
+    color: white;
+}
+
+#saveCanvas:hover{
+    background-color: #000000;
+    color: white;
+}
+
+#saveCanvas{
+    background-color: #00fcfc;
+}
 
 /* ------------------------------ */
 

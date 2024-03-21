@@ -180,6 +180,9 @@ downlaodQrBtn.addEventListener('click', (e) => {
 const canvas = document.getElementById('drawCanvas');
 const context = canvas.getContext('2d');
 
+let clearCanvasBtn = document.getElementById('clearCanvas');
+let saveCanvasBtn = document.getElementById('saveCanvas');
+
 let painting = false;
 
 function start(e) {
@@ -208,7 +211,25 @@ canvas.addEventListener('mousedown', start);
 canvas.addEventListener('mouseup', end);
 canvas.addEventListener('mousemove', draw);
 
+clearCanvasBtn.addEventListener('click', clearCanvas);
+saveCanvasBtn.addEventListener('click', saveCanvas);
 
+function clearCanvas() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function saveCanvas() {
+  // Convert the canvas content to a data URL
+  let dataURL = canvas.toDataURL();
+
+  // Create a temporary anchor element to trigger the download
+  let a = document.createElement('a');
+  a.href = dataURL;
+  a.download = 'my_drawing.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
 // Weather-App Script
 
