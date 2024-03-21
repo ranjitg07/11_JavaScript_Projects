@@ -66,10 +66,18 @@ li{
     height: 100vh;
 }
 
-.right-content h1{
+.title{
+    display: inline;
     font-size: 2rem;
     font-weight: 700;
-    /* margin-bottom: 2rem; */
+    color: rgb(213, 255, 2);
+    border-bottom: 5px solid #00ffea;
+}
+
+.sub-title{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 /* ---------------------------- */
@@ -83,11 +91,6 @@ li{
     margin: 90px auto;
     padding: 20px;
     border-radius: 10px;
-}
-
-.todo-container h1{
-    font-size: 2.5rem;
-    margin-bottom: 30px;
 }
 
 .add{
@@ -160,13 +163,17 @@ li{
     border-radius: 10px;
 }
 
+.bmi-container h1{
+    margin-bottom: -5px;
+}
+
 .input,.btn{
     width: 100%;
     background-color: #e3e3e3;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .btn-calc{
@@ -308,7 +315,6 @@ li{
 }
 
 .pass-header h1{
-    padding-bottom: 1.5rem;
     color: white;
 }
 
@@ -355,9 +361,11 @@ li{
 /* ------------------------------ */
 
 /* Digital-Clock Section*/
+
 /* #clock{
     background: linear-gradient(45deg, #08001f, #30197d);
 } */
+
 .clock-container{
     position: relative;
     display: flex;
@@ -462,10 +470,6 @@ li{
     z-index: 2;
 }
 
-.qr-header h1{
-    padding-bottom: 1.5rem;
-}
-
 #qr-input{
     width: 100%;
     background-color: #fff959;
@@ -539,11 +543,13 @@ li{
 }
 
 #qrGenerateBtn:hover{
-    background-color: #fb79fb;
+    background-color: #000000;
+    color: white;
 }
 
 #qrdownloadBtn:hover{
-    background-color: #a2ffff;
+    background-color: #000000;
+    color: white;
 }
 
 #qrdownloadBtn{
