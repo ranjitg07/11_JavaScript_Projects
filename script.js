@@ -177,6 +177,37 @@ downlaodQrBtn.addEventListener('click', (e) => {
 
 // Drawing-App Script
 
+const canvas = document.getElementById('drawCanvas');
+const context = canvas.getContext('2d');
+
+let painting = false;
+
+function start(e) {
+  painting = true;
+  draw(e);
+}
+
+function end(){
+  painting = false;
+  context.beginPath(); // Start a new path for the next drawing
+}
+
+function draw(e){
+  if(!painting) return;
+
+  context.lineWidth = 5;
+  context.lineCap = 'round';
+  context.strokeStyle = 'black';
+
+  // Use offsetX and offsetY for drawing on the canvas
+  context.lineTo(e.offsetX, e.offsetY);
+  context.stroke();
+}
+
+canvas.addEventListener('mousedown', start);
+canvas.addEventListener('mouseup', end);
+canvas.addEventListener('mousemove', draw);
+
 
 
 // Weather-App Script

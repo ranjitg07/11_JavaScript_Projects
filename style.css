@@ -565,6 +565,22 @@ li{
 
 /* Drawing-App Section*/
 
+.drawing-section{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawing-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas{
+    border: 2px solid white;
+}
 
 
 /* ------------------------------ */
