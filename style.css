@@ -634,6 +634,10 @@ canvas{
     border-radius: 20px;
 }
 
+.weather-container h1{
+    color: white;
+}
+
 .search{
     width: 100%;
     display: flex;
@@ -704,7 +708,7 @@ canvas{
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .col{
