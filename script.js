@@ -233,6 +233,45 @@ function saveCanvas() {
 
 // Weather-App Script
 
+const apiKey = "af8f534c6d9f8f987934d3bbd77240c5";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search input")
+const searchBtn = document.querySelector(".search button")
+const weatherIcon = document.querySelector(".weather-icon")
+
+async function checkWeather(city) {
+  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  let data = await response.json();
+
+  console.log(data);
+
+  let cityName = document.querySelector('.city').innerHTML = data.name;
+  let temperature  = document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + "°C";
+  let humidity = document.querySelector('.humidity').innerHTML = data.main.humidity + "%";
+  let wind = document.querySelector('.wind').innerHTML = data.wind.speed + " Km/h";
+
+  if(data.weather[0].main == " Clouds"){
+    weatherIcon.src = "./Assets/clouds.png"
+  } else if(data.weather[0].main == "Clear"){
+    weatherIcon.src = "./Assets/clear.png"
+  } else if(data.weather[0].main == "Rain"){
+    weatherIcon.src = "./Assets/rain.png"
+  } else if(data.weather[0].main == "Drizzle"){
+    weatherIcon.src = "./Assets/drizzle.png"
+  } else if(data.weather[0].main == "Winter"){
+    weatherIcon.src = "./Assets/snowfall.png"
+  } else if(data.weather[0].main == "Storm"){
+    weatherIcon.src = "./Assets/storm.png"
+  }
+
+}
+
+searchBtn.addEventListener('click', () => {
+  checkWeather(searchBox.value);
+  searchBox.value = "";
+})
+
 
 
 // Recipe-Finder Script
