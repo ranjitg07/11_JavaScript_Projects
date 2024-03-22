@@ -728,6 +728,10 @@ canvas{
 
 /* Recipe-Finder Section */
 
-
+.recipe-section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
 
 /* ------------------------------ */

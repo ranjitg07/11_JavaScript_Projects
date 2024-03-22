@@ -233,7 +233,9 @@ function saveCanvas() {
 
 // Weather-App Script
 
-const apiKey = "af8f534c6d9f8f987934d3bbd77240c5";
+// Load environment variables from .env file
+require('dotenv').config();
+
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const searchBox = document.querySelector(".search input");
@@ -252,6 +254,7 @@ const weatherIcons = {
 
 async function checkWeather(city) {
   try {
+    const apiKey = process.env.OPENWEATHERMAP_API_KEY;
     const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
     const data = await response.json();
 
@@ -273,6 +276,8 @@ searchBtn.addEventListener('click', () => {
   checkWeather(searchBox.value);
   searchBox.value = "";
 });
+
+
 
 
 
