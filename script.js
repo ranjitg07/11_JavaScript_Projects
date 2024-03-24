@@ -282,6 +282,7 @@ searchBtn.addEventListener('click', () => {
 function searchRecipe() {
   const recipeInput = document.getElementById('searchRecipe').value;
   const recipeLists = document.getElementById('meal-container');
+  const recipeContent = document.getElementById('recipe');
   recipeLists.innerHTML = '';
 
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeInput}`)
@@ -300,7 +301,7 @@ function searchRecipe() {
       recipeLists.appendChild(meals);
     })
     .catch(err => {
-      console.log('fetch error:', err);
+      console.log('Error', err);
     })
   })
 }

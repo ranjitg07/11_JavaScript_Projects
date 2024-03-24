@@ -65,8 +65,8 @@ li{
     /* display: flex;
     flex-direction: column;
     flex: 1; */
+    /* height: 100vh; */
     padding: 2rem;
-    height: 100vh;
 }
 
 .title{
@@ -86,6 +86,11 @@ li{
 /* ---------------------------- */
 
 /* Todo Section */
+
+.todo-section{
+    height: 100vh;
+}
+
 .todo-container{
     background-color: aliceblue;   
     text-align: center;
@@ -149,7 +154,7 @@ li{
 /* BMI Section */
 
 .bmi-section{
-    display: flex;
+    height: 70vh;
 }
 
 .bmi-container{
@@ -160,7 +165,7 @@ li{
     gap: 1rem;
     background-color: aliceblue;   
     text-align: center;
-    min-width: 300px;
+    max-width: 350px;
     margin: 90px auto;
     padding: 30px;
     border-radius: 10px;
@@ -201,14 +206,14 @@ li{
 /* Copy Clipboard Section */
 
 .copy-section{
-    display: flex;
+    height: 60vh;
 }
 
-.copy-container{    
+.copy-container{
     background-color: aliceblue;   
     text-align: center;
-    min-width: 500px;
-    margin: 90px auto;
+    max-width: 500px;
+    margin: 170px auto;
     padding: 30px;
     border-radius: 10px;
 }
@@ -254,7 +259,7 @@ li{
 /* Quote-Generator Section*/
 
 .quote-section{
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -299,7 +304,7 @@ li{
 /* Password-Generator Section*/
 
 .password-section{
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -374,7 +379,7 @@ li{
     display: flex;
     /* justify-content: center; either use this or margin: 90px auto; */
     align-items: center;
-    height: 75vh;
+    height: 80vh;
 }
 
 .clock{
@@ -729,13 +734,17 @@ canvas{
 
 /* Recipe-Finder Section */
 
+#recipe{
+    margin-bottom: 323px;
+}
+
 .recipe-section{
     display: flex; 
     justify-content: center;
+    align-items: center;
 }
 
 .recipe-container{
-    /* width: 100%; */
     border: 1px solid black;
     display: flex;
     align-items: center;
