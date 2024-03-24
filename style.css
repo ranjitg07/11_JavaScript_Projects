@@ -19,6 +19,7 @@ li{
     background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 }
 
+
 /* left content navBar */
 .left-content{
     position: sticky;
@@ -30,6 +31,8 @@ li{
     padding: 3rem;
     background: black;
     border-right: 4px solid white;
+    overflow-y: auto;
+    z-index: 1000;
 }
 
 .nav-list{
@@ -722,16 +725,127 @@ canvas{
     width: 40px;
 }
 
-
-
 /* ------------------------------ */
 
 /* Recipe-Finder Section */
 
 .recipe-section{
-    height: 100vh;
-    display: flex;
+    display: flex; 
     justify-content: center;
 }
 
+.recipe-container{
+    /* width: 100%; */
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);   
+    text-align: center;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.recipe-container h1{
+    color: #00bbff;
+    margin-bottom: -1px;
+}
+
+.recipe-container label{
+    display: block;
+    width: 100%;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 10px;
+}
+
+#searchRecipe{
+    height: 50px;
+    background-color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-right: .3rem;
+    font-size: 18px;
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+    color: #3c3c3c;
+}
+
+.recipeBtn{
+    border: 0;
+    outline: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #ebfffc;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+
+.recipeBtn i{
+    font-size: 1.4rem;
+}
+
+.recipeBtn:hover{
+    background-color: black;
+    color: white;
+}
+
+#meal-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.meal{
+    margin: 40px 20px;
+    padding: 15px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.352);
+}
+
+.meal img{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.meal h3{
+    color: rgb(208, 255, 0);
+    margin-bottom: 10px;
+}
+
+.instructions{
+    color: white;
+    margin-top: 10px;
+    overflow: hidden;
+    max-height: 90px;
+}
+
+.read-more{
+    border: 2px solid white;
+    outline: 0;
+    background-color: #ff4ff0;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover{
+    background-color: black;
+    color: white;
+}
+.expanded{
+    max-height: 100%;
+}
 /* ------------------------------ */

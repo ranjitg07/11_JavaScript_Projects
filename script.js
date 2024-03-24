@@ -277,8 +277,43 @@ searchBtn.addEventListener('click', () => {
   searchBox.value = "";
 });
 
-
-
-
-
 // Recipe-Finder Script
+
+function searchRecipe() {
+  const recipeInput = document.getElementById('searchRecipe').value;
+  const recipeLists = document.getElementById('meal-container');
+  recipeLists.innerHTML = '';
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeInput}`)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    data.meals.forEach(meal => {
+      const meals = document.createElement('div');
+      meals.classList.add('meal');
+      meals.innerHTML = `
+        <h3>${meal.strMeal}</h3>
+        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+        <p class = "instructions">${meal.strInstructions}</p>
+        <button class = "read-more" onclick = "readMore(this)">Read More</button>
+      `;
+      recipeLists.appendChild(meals);
+    })
+    .catch(err => {
+      console.log('fetch error:', err);
+    })
+  })
+}
+
+function readMore(button) {
+  const paragraph = button.previousElementSibling;
+
+  if(paragraph.classList.contains('expanded')){
+    paragraph.classList.remove('expanded');
+    button.textContent = 'Read More';
+  } else {
+    paragraph.classList.add('expanded');
+    button.textContent = 'Read Less';
+  }
+
+}
