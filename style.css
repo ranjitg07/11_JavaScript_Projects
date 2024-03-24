@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dosis:wght@200..800&display=swap');
 
 *{
     padding: 0;
@@ -147,6 +147,103 @@ li{
     color: #9ca8a6;
     background-color: transparent;
     font-size: 18px;
+}
+
+/* ------------------------------ */
+
+/* Calculator */
+
+.calc-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.wrapper h1{
+    color: #ffffff;
+}
+
+.wrapper{
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    color: black;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.30);
+    border: 2px solid rgba(255, 255, 255, 0.34);
+    flex-basis: 400px;
+    height: 620px;
+    padding: 20px 35px;
+    font-family: "Dosis", sans-serif;
+}
+
+#display{
+    backdrop-filter: blur(55.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    color: black;
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: inherit;
+    overflow: auto;
+    padding: 20px;
+    text-align: right;
+    width: 326px;
+}
+
+.calc-btn-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+.calc-btn{
+    backdrop-filter: blur(55.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    color: #232323;
+    border-radius: 16px;
+    flex-basis: 20%;
+    font-family: "Dosis", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 65px;
+}
+
+.calc-btn:last-child{
+    backdrop-filter: blur(55.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    border-radius: 16px;
+    color: #fff;
+    background: #d72880;
+}
+
+.calc-btn:last-child:hover{
+    background-color: inherit;
+    color: inherit;
+}
+
+.calc-btn:hover{
+    background-color: inherit;
+}
+
+.calc-btn:active{
+    background-color: #4ef0ff;
+}
+
+.triple{
+    flex-basis: 47%;
 }
 
 /* ------------------------------ */

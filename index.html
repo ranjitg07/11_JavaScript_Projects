@@ -86,8 +86,49 @@
             <h1 class="title">Calculator</h1>
             <section class="calc-section">
               <div class="calc-container">
-                <h1 class="sub-title">Calcify</h1>
                 
+                <div class="wrapper">
+                  <h1 class="sub-title">Calcify</h1>
+                  <input type="text" id="display" readonly placeholder="0">
+                  
+                  <div class="keys">
+                      <div class="calc-btn-row">
+                          <button class="calc-btn double" onclick="clearDisplay('C')">C</button>
+                          <button class="calc-btn" onclick="appendToDisplay('%')">%</button>
+                          <button class="calc-btn" onclick="backKey('🠔')">&#129044;</button> 
+                          <!-- 🠔 -->
+                          <button class="calc-btn" onclick="appendToDisplay('/')">&divide;</button>
+                      </div>
+          
+                      <div class="calc-btn-row">
+                          <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                          <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                          <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                          <button class="calc-btn" onclick="appendToDisplay('*')">&times;</button>
+                      </div>
+          
+                      <div class="calc-btn-row">
+                          <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                          <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                          <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                          <button class="calc-btn" onclick="appendToDisplay('-')">&minus;</button>
+                      </div>
+          
+                      <div class="calc-btn-row">
+                          <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                          <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                          <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                          <button class="calc-btn" onclick="appendToDisplay('+')">&plus;</button>
+                      </div>
+          
+                      <div class="calc-btn-row">
+                          <button class="calc-btn triple" onclick="appendToDisplay('0')">0</button>
+                          <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                          <button class="calc-btn" onclick="calculate()">&equals;</button>
+                      </div>
+                  </div>
+              </div>
+
               </div>
             </section>
           </main>
