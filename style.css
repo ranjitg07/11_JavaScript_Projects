@@ -363,36 +363,122 @@ li{
 }
 
 .quote-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: aliceblue;   
+    max-width: 700px;
+    margin: 170px auto;
     padding: 30px;
+    border-radius: 15px;
 }
 
-.quote{
-    font-family: "Aboreto", system-ui;
-    padding-bottom: 10px;
+.quote-container h1{
     text-align: center;
 }
-.author{
-    font-family: "Aboreto", system-ui;
-    padding-bottom: 1.5rem
-    
+
+.quote-container .quoteContent{
+    margin: 35px 0;
 }
 
-.quoteBtn{
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 700;
+.quoteContent .quote-area{
+    display: flex;
+    justify-content: center;
+}
+
+.quote-area i:first-child{
+    margin-right: 10px;
+}
+
+.quote-area i:last-child{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 10px;
+}
+
+.quote-area .quote{
+    font-size: 1.5rem;
+    text-align: center;
+    word-break: break-all;
+}
+
+.quoteContent .author{
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+    font-style: italic;
+    font-size: 18px;
+}
+
+.author span:first-child{
+    margin-right: 5px;
+}
+
+.quote-container .quoteButtons{
+    border-top: 1px solid #ccc;
+}
+
+.quoteButtons .features{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.features ul{
+    display: flex;
+    gap: 1rem;
+}
+
+.features ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    color: #000000;
     cursor: pointer;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
-.quoteBtn:hover{
-    background-color: black;
-    color: white;
+.features ul li:hover{
+    background: #000000;
+    color: rgb(255, 255, 255);
+}
+
+.features button{
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #ff5252;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.features button:hover{
+    background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.features button:active{
+    background-color: #fcf414;
+      box-shadow: none;
+      transform: translateY(4px);
+}
+
+button.loading{
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.fa-check{
+    color: rgb(0, 255, 0);
 }
 
 /* ------------------------------ */

@@ -100,26 +100,56 @@ document.getElementById('textToCopy').addEventListener('input', function() {
 
 // Quote-Generator Script
 
-let quoteShown = document.querySelector('.quote');
-let generateQuote = document.querySelector('.quoteBtn');
-let Author = document.querySelector('.author');
-let num = 0;
-let quote = [];
+const quoteText = document.querySelector('.quote'),
+      authorName = document.querySelector('.authorName'),
+      quoteBtn = document.getElementById('newQuote'),
+      soundBtn = document.querySelector('.sound'),
+      copyQuoteBtn = document.querySelector('.copy'),
+      twitterBtn = document.querySelector('.twitter')
 
-fetch('https://type.fit/api/quotes')
-.then(response => {
-  return response.json();
-}).then(data => {
-  quote = data;
-}).catch(err => {
-  console.log('fetch error:', err);
-})
+// random quote function
+function randomQuote() {
+  // added loading class to the button, so that the button won't work when clicked and loading quote msg shows.
+  quoteBtn.classList.add("loading");
+  quoteBtn.innerHTML = "Loading Quote...";
+  // fectching random quote/ data from the API and parsing it into javascript object
+  fetch("https://api.quotable.io/random").then(res => res.json()).then(result => {
+    quoteText.innerText = result.content
+    authorName.innerText = result.author
+    quoteBtn.innerText = "New Quote";
+    quoteBtn.classList.remove("loading");
+  })
+}
 
-generateQuote.addEventListener('click', () =>{
-  num++;
-  quoteShown.innerText = quote[num].text;
-  Author.innerText = '~' + quote[num].author;
-})
+soundBtn.addEventListener("click", () => {
+  // the SpeechSynthesisUtterance is a web speech api that represents a speech request
+  let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText} by ${authorName.innerText}`);
+  speechSynthesis.speak(utterance);
+});
+
+copyQuoteBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(quoteText.innerText)
+    .then(() => {
+      // Update button icon and color to show success
+      copyQuoteBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
+      // Clear the message after 2 seconds
+      setTimeout(() => {
+        copyQuoteBtn.innerHTML = `<i class="fas fa-copy"></i></li>`;
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error('Unable to copy text: ', error);
+    });
+});
+
+
+twitterBtn.addEventListener('click', () => {
+  let tweetUrl = `https://twitter.com/intent/tweet?url=${quoteText.innerText}`;
+  window.open(tweetUrl, '_blank');
+});
+
+quoteBtn.addEventListener('click', randomQuote);
+
 
 // Password-Generator Script
 
