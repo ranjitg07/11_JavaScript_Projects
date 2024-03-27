@@ -356,16 +356,15 @@ li{
 /* Quote-Generator Section*/
 
 .quote-section{
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* position: relative; */
+    height: 100vh;
 }
 
 .quote-container{
+    position: relative;
     background-color: aliceblue;   
     max-width: 700px;
-    margin: 170px auto;
+    margin: 100px auto;
     padding: 30px;
     border-radius: 15px;
 }
@@ -479,6 +478,70 @@ button.loading{
 
 .fa-check{
     color: rgb(0, 255, 0);
+}
+
+/* Like Section */
+.likeDiv{
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+.likeDiv button{
+    background-color: transparent;
+    border: none;
+}
+
+.likeDiv i{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Favourite Section */
+.favourite-container{
+    border: 2px solid black;
+    width: 44%; 
+    background-color: #dbffff;
+    position: absolute;
+    top: 205rem;
+    left: 40%;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 40px 0 rgba(88, 83, 153, 0.15);
+}
+
+.favourite-container ul{
+    padding: 0; /* Remove default padding */
+    max-height: 23vh; /* Set maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.favourite-container li{
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.active{
+    color: red;
+}
+
+.favourite-container button{
+    margin-top: 1rem;
+    background-color: #000000;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    /* transition: all 0.3s ease; */
+}
+
+.favourite-container button:hover{
+    background-color: #dbffff;
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 /* ------------------------------ */

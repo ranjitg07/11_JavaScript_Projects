@@ -106,6 +106,8 @@ const quoteText = document.querySelector('.quote'),
       soundBtn = document.querySelector('.sound'),
       copyQuoteBtn = document.querySelector('.copy'),
       twitterBtn = document.querySelector('.twitter')
+      
+
 
 // random quote function
 function randomQuote() {
@@ -147,6 +149,127 @@ twitterBtn.addEventListener('click', () => {
   let tweetUrl = `https://twitter.com/intent/tweet?url=${quoteText.innerText}`;
   window.open(tweetUrl, '_blank');
 });
+
+
+// Favorite Container
+heartBtn = document.getElementById('heart-fav'),
+listOfQuotes = document.getElementById('list-of-favourite-quotes'),
+showListOfFavQuotes = document.getElementById('show-list'),
+clearFav = document.getElementById('clear-button'),
+closeFav = document.getElementById('close-fav'),
+favContainer = document.querySelector('.favourite-container');
+
+let favorites = [];
+// check whetehr a quote is already in the favorites list
+const checkExistingQuote = (content, quoteAuthor) => {
+  return favorites.some((q) => 
+  q.content === content && q.author === quoteAuthor) 
+}
+// Update displayed quote and author, also update heart icon class
+const updateQuote = (content, quoteAuthor) => {
+  quoteText.innerText = content;
+  authorName.innerText = quoteAuthor;
+  
+  let existsInFavorites = checkExistingQuote(content, quoteAuthor);
+  let heartIcon = heartBtn.firstElementChild;
+  
+  if (existsInFavorites) {
+    heartIcon.classList.remove('fa-regular');
+    heartIcon.classList.add('fa-solid', 'active');
+  } else {
+    heartIcon.classList.remove('fa-solid', 'active');
+    heartIcon.classList.add('fa-regular');
+  }
+}
+
+// Function to handle new quote button click
+const handleNewQuote = () => {
+  randomQuote(); // Generate new quote
+  updateQuote(quoteText.innerText, authorName.innerText); // Update quote display
+}
+
+// Add event listener for new quote button
+document.getElementById('newQuote').addEventListener('click', handleNewQuote);
+
+
+// display favorites
+const displayFavorites = () => {
+  listOfQuotes.innerHTML = '';
+  favorites.forEach((quote, index) => {
+  const listItem = document.createElement('li');
+  listItem.textContent = `${index+1}. ${quote.content} - ${quote.authorName}`
+  listOfQuotes.appendChild(listItem);
+  })
+}
+
+// save favorites to local storage
+const saveFavoritesToLocalStorage = () =>{
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+// add to favorites
+const addToFavorites = () => {
+  let heartIcon = heartBtn.firstElementChild;
+  // red color for heart
+  heartIcon.classList.remove('fa-regular');
+  heartIcon.classList.add('fa-solid', 'active');
+  const content = quoteText.innerText;
+  const quoteAuthor = authorName.innerText;
+  let existsInFavorites = checkExistingQuote(content, quoteAuthor);
+  // push to favorites array only if it doesn't already exist
+  if(!existsInFavorites){
+    favorites.push({
+      content,
+      authorName: quoteAuthor
+    });
+    saveFavoritesToLocalStorage();
+    displayFavorites();
+  }
+}
+
+// clear favorites
+const clearFavorites = () => {
+  localStorage.removeItem('favorites');
+  favorites = [];
+  displayFavorites();
+  favContainer.style.display = 'none';
+  listOfQuotes.style.display = 'none';
+  let heartIcon = heartBtn.firstElementChild;
+  // if current quote is in favorites clear the heart icon
+  if(heartIcon.classList.contains('fa-solid')){
+    heartIcon.classList.remove('fa-solid', 'active');
+    heartIcon.classList.add('fa-regular');
+  }
+}
+
+// when page loads
+window.onload = () => {
+  listOfQuotes.style.display = 'none';
+  favContainer.style.display = 'none';
+  heartBtn.addEventListener('click', addToFavorites);
+  clearFav.addEventListener('click', clearFavorites);
+  // get exisitng list of favorites
+  let storedFavorites = localStorage.getItem('favorites');
+  if(storedFavorites) {
+    favorites = JSON.parse(storedFavorites);
+    displayFavorites();
+  }
+  // randomQuote();
+}
+
+showListOfFavQuotes.addEventListener('click', () => {
+  if(favorites.length == 0){
+    listOfQuotes.innerHTML = "You haven't added any quotes yet</p>";
+  }
+  listOfQuotes.style.display = 'block';
+  favContainer.style.display = 'block';
+})
+
+// close button
+closeFav.addEventListener("click", () => {
+  listOfQuotes.style.display = 'none';
+  favContainer.style.display = 'none';
+})
 
 quoteBtn.addEventListener('click', randomQuote);
 
