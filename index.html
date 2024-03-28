@@ -65,15 +65,44 @@
             <section class="todo-section">
               <h1 class="title">Todo</h1>
               <div class="todo-container">
-                <h1 class="sub-title">Listify</h1>
-                <input
-                  type="text"
-                  id="taskInput"
-                  class="task-input"
-                  placeholder="Add a new task"
-                />
-                <button class="add"><i class="fa-solid fa-plus"></i></button>
-                <ul id="taskList"></ul>
+                <div class="todo-header">
+                  <h1 class="sub-title">Listify</h1>
+                  <img src="./Assets/todoImages/icon.png" alt="Todo Logo" width="30">
+                </div>
+                <!-- Progress Container -->
+                <div class="stats-container">
+                  <div class="detailsTodo">
+                    <h3>Your Progress</h3>
+                    <p>Keep it up</p>
+                    <div id="progressBar">
+                      <div id="progress"></div>
+                    </div>
+                  </div>
+
+                  <div class="stats-number">
+                    <p id="todoNumbers">2 / 3</p>
+                  </div>
+                  
+                </div>
+
+                <div class="todo-row">
+                  <input
+                    type="text"
+                    id="taskInput"
+                    class="task-input"
+                    placeholder="Add a new task"
+                  />
+                  <button class="add"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <ul id="taskList">
+                  <li class="checkedTodo">Task 1</li>
+                  <li>Task 1</li>
+                  <li>Task 1</li>
+                </ul>
+                <div class="todo-footer">
+                  <p><span>0 </span>items</p>
+                  <p id="deleteAll">Delete All</p>
+                </div>
               </div>
             </section>
           </main>
