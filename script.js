@@ -189,7 +189,7 @@ const handleNewQuote = () => {
 }
 
 // Add event listener for new quote button
-document.getElementById('newQuote').addEventListener('click', handleNewQuote);
+quoteBtn.addEventListener('click', handleNewQuote);
 
 
 // display favorites
@@ -270,8 +270,6 @@ closeFav.addEventListener("click", () => {
   listOfQuotes.style.display = 'none';
   favContainer.style.display = 'none';
 })
-
-quoteBtn.addEventListener('click', randomQuote);
 
 
 // Password-Generator Script
