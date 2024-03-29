@@ -101,7 +101,7 @@ li{
 }
 
 .stats-container{
-    background-color: #bdfff9;
+    background-color: #ffe8e4;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -119,7 +119,7 @@ li{
 #progressBar{
     width: 100%;
     height: 10px;
-    background-color: #ffbdfc;
+    background-color: #ffcabf;
     border-radius: 5px;
     margin-top: 20px;
 }
@@ -127,7 +127,7 @@ li{
 #progress{
     width: 50%;
     height: 10px;
-    background-color: #ff00f2;
+    background-color: #ff2a00;
     border-radius: 5px;
 }
 
@@ -166,14 +166,14 @@ li{
     padding: 15px;
     border: none;
     outline: none;
-    background-color: #d8e7e4;
+    background-color: #ffe2d8;
     border-radius: 10px;
     margin-right: 10px;
     font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
-.add{
+.addTask{
     padding: 10px 18px;
     border: none;
     outline: none;
@@ -184,7 +184,7 @@ li{
     transition: background-color 0.3s ease;
 }
 
-.add:hover{
+.addTask:hover{
     background-color: #000000;
     color: white;
 }
@@ -206,6 +206,7 @@ li{
     align-items: center;
 }
 
+/* adds a unchecked image beside the task */
 #taskList li::before{
     content: '';
     position: absolute;
@@ -223,6 +224,7 @@ li.checkedTodo{
     text-decoration: line-through;
 }
 
+/* adds a checked image beside the task when you click on the task to mark it complete */
 #taskList li.checkedTodo::before{
     background-image: url(./Assets/todoImages/checked.png);
 }
@@ -231,7 +233,7 @@ li.checkedTodo{
     cursor: pointer;
     border: none;
     outline: none;
-    color: #9ca8a6;
+    color: #ff1919;
     background-color: transparent;
     font-size: 18px;
 }
