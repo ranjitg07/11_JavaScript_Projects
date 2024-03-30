@@ -191,25 +191,43 @@ li{
 
 #taskList{
     padding: 0;
+    max-height: 27vh;
+    overflow-y: scroll;
 }
 
-#taskList li{
-    margin-top: 1rem;
-    padding: 12px 8px 12px 40px;
-    font-size: 17px;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-    /* for space between delete icon and li */
+.taskItem{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2rem;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.editDeleteBtn{
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    gap: 1.2rem;
+}
+
+#taskList li{
+    /* margin-top: 1rem; */
+    /* padding: 12px 8px 12px 40px; */
+    font-size: 17px;
+    user-select: none;
+    cursor: pointer;
+    /* position: relative; */
+    /* for space between delete icon and li */
 }
 
 /* adds a unchecked image beside the task */
-#taskList li::before{
-    content: '';
-    position: absolute;
+#taskList .unchecked{
+    /* position: absolute; */
     height: 28px;
     width: 28px;
     left: 0;
@@ -219,23 +237,30 @@ li{
     background-position: center;
 }
 
-li.checkedTodo{
+.checkedTodo{
+    display: none;
+    background-image: url(./Assets/todoImages/checked.png);
     color: #555;
     text-decoration: line-through;
 }
 
 /* adds a checked image beside the task when you click on the task to mark it complete */
-#taskList li.checkedTodo::before{
+/* #taskList li.checkedTodo::before{
+    display: none;
     background-image: url(./Assets/todoImages/checked.png);
-}
+} */
 
-.delete{
+.deleteTask, .editTask{
     cursor: pointer;
     border: none;
     outline: none;
     color: #ff1919;
     background-color: transparent;
     font-size: 18px;
+}
+
+.editTask{
+    color: greenyellow;
 }
 
 .todo-footer{

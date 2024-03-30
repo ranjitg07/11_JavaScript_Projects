@@ -1,6 +1,49 @@
 // Todo Script
 
+let tasks = [];
+const taskInput = document.getElementById('taskInput');
+const taskBtn = document.querySelector('.addTask');
 
+
+const addTask = () => {
+  const taskText = taskInput.value.trim();
+
+  if(taskText){
+    tasks.push({ text: taskText, completed: false });
+    taskInput.value = '';
+    updateTasksList();
+  }
+}
+
+const updateTasksList = () => {
+  const taskList = document.getElementById('taskList');
+  taskList.innerHTML = '';
+
+  tasks.forEach((task, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+    <div class="taskItem">
+    <div class="task">
+      <img src="./Assets/todoImages/unchecked.png" class="unchecked">
+      <li class="">${task.text}</li>
+    </div>
+    <div class="editDeleteBtn">
+      <button class="editTask" onClick="editTask(${index})"><i class="fa-solid fa-pen-to-square"></i></button>
+      <button class="deleteTask" onClick="deleteTask(${index})"><i class="fa-solid fa-trash"></i></button>
+    </div>
+    </div>
+  `
+    taskList.appendChild(listItem);
+  })
+}
+
+
+
+taskBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  addTask();
+});
 
 
 // let input = document.getElementById("taskInput");
@@ -16,11 +59,14 @@
 //     li.textContent = taskText;
 
 //     let deleteBtn = document.createElement("button");
+//     editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
 //     deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-//     deleteBtn.className = "delete";
+//     deleteBtn.className = "deleteTask";
 //     deleteBtn.onclick = function () {
 //       li.remove();
 //     };
+      
+      
 
 //     li.appendChild(deleteBtn);
 //     ul.appendChild(li);
