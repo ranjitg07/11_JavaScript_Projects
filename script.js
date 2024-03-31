@@ -15,29 +15,62 @@ const addTask = () => {
   }
 }
 
+const toggleTaskComplete = (index) => {
+  tasks[index].completed = !tasks[index].completed;
+  updateTasksList();
+}
+
 const updateTasksList = () => {
   const taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
 
   tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `
-    <div class="taskItem">
-    <div class="task">
-      <img src="./Assets/todoImages/unchecked.png" class="unchecked">
-      <li class="">${task.text}</li>
-    </div>
-    <div class="editDeleteBtn">
-      <button class="editTask" onClick="editTask(${index})"><i class="fa-solid fa-pen-to-square"></i></button>
-      <button class="deleteTask" onClick="deleteTask(${index})"><i class="fa-solid fa-trash"></i></button>
-    </div>
-    </div>
-  `
+    const taskItemDiv = document.createElement('div');
+    taskItemDiv.classList.add('taskItem');
+
+    const taskDiv = document.createElement('div');
+    taskDiv.classList.add('task');
+    taskDiv.classList.toggle('completed', task.completed);
+
+    const checkboxImg = document.createElement('img');
+    checkboxImg.src = task.completed ? './Assets/todoImages/checked.png' : './Assets/todoImages/unchecked.png';
+    checkboxImg.classList.add('checkboxImg');
+
+    const taskText = document.createElement('span');
+    taskText.textContent = task.text;
+
+    taskDiv.appendChild(checkboxImg);
+    taskDiv.appendChild(taskText);
+
+    taskItemDiv.appendChild(taskDiv);
+
+    const editDeleteBtnDiv = document.createElement('div');
+    editDeleteBtnDiv.classList.add('editDeleteBtn');
+
+    const editButton = document.createElement('button');
+    editButton.classList.add('editTask');
+    editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+    editButton.addEventListener('click', () => editTask(index));
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteTask');
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    deleteButton.addEventListener('click', () => deleteTask(index));
+
+    editDeleteBtnDiv.appendChild(editButton);
+    editDeleteBtnDiv.appendChild(deleteButton);
+
+    taskItemDiv.appendChild(editDeleteBtnDiv);
+
+    listItem.appendChild(taskItemDiv);
+
     taskList.appendChild(listItem);
-  })
+
+    // Add event listener to taskItem div
+    taskDiv.addEventListener('click', () => toggleTaskComplete(index));
+  });
 }
-
-
 
 taskBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -45,35 +78,6 @@ taskBtn.addEventListener("click", function (e) {
   addTask();
 });
 
-
-// let input = document.getElementById("taskInput");
-// let btn_add = document.querySelector(".addTask");
-// let ul = document.getElementById("taskList");
-
-// btn_add.addEventListener("click", addTask);
-
-// function addTask() {
-//   let taskText = input.value.trim();
-//   if (taskText !== "") {
-//     let li = document.createElement("li");
-//     li.textContent = taskText;
-
-//     let deleteBtn = document.createElement("button");
-//     editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-//     deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-//     deleteBtn.className = "deleteTask";
-//     deleteBtn.onclick = function () {
-//       li.remove();
-//     };
-      
-      
-
-//     li.appendChild(deleteBtn);
-//     ul.appendChild(li);
-
-//     input.value = "";
-//   }
-// }
 
 // Calculator Script
 
