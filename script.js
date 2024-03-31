@@ -20,6 +20,20 @@ const toggleTaskComplete = (index) => {
   updateTasksList();
 }
 
+const deleteTask = (index) => {
+  tasks.splice(index, 1);
+  updateTasksList();
+}
+
+const editTask = (index) => {
+  // once clicked edit btn task will be added inside the input field so that it can be updated
+  taskInput.value = tasks[index].text;
+  // clear the task
+  tasks.splice(index, 1);
+  // once the task is updated it will add the task to the list
+  updateTasksList();
+}
+
 const updateTasksList = () => {
   const taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
