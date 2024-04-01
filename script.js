@@ -1,194 +1,59 @@
-// Todo Script
+let input = document.getElementById("taskInput");
+    let btn_add = document.querySelector(".addTask");
+    let ul = document.getElementById("taskList");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const storedTasks = JSON.parse(localStorage.getItem('tasks'))
+    btn_add.addEventListener("click", addTask);
 
-  if(storedTasks){
-    storedTasks.forEach((task) => tasks.push(task));
-    updateTasksList();
-    updateStats();
-    itemTotals();
-  }
-})
+    function addTask() {
+      let taskText = input.value.trim();
+      if (taskText !== "") {
+        let li = document.createElement("li");
+        li.className = "task-item";
 
-let tasks = [];
-const taskInput = document.getElementById('taskInput');
-const taskBtn = document.querySelector('.addTask');
-const deleteAllBtn = document.getElementById('deleteAll')
+        // Create circle icon
+        let circleIcon = document.createElement("i");
+        circleIcon.className = "fa-regular fa-circle circle";
+        circleIcon.addEventListener("click", function () {
+          li.classList.toggle("checked");
+          toggleCheckedIcon(circleIcon);
+          toggleLineThrough(taskTextNode);
+        });
+        li.appendChild(circleIcon);
 
-const saveTask = () => {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+        // Add task text
+        let taskTextNode = document.createElement("span");
+        taskTextNode.className = "task-text";
+        taskTextNode.textContent = taskText;
+        li.appendChild(taskTextNode);
 
-const addTask = () => {
-  const taskText = taskInput.value.trim();
+        // Add delete button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-btn";
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        deleteBtn.onclick = function () {
+          li.remove();
+        };
+        li.appendChild(deleteBtn);
 
-  if(taskText){
-    tasks.push({ text: taskText, completed: false });
-    taskInput.value = '';
-    updateTasksList();
-    updateStats();
-    itemTotals();
-    saveTask();
-  }
-}
+        ul.appendChild(li);
 
-const toggleTaskComplete = (index) => {
-  tasks[index].completed = !tasks[index].completed;
-  updateTasksList();
-  updateStats();
-  itemTotals();
-  saveTask();
-}
+        input.value = "";
+      }
+    }
 
-const deleteTask = (index) => {
-  tasks.splice(index, 1);
-  updateTasksList();
-  updateStats();
-  itemTotals();
-  saveTask();
-}
+    function toggleCheckedIcon(circleIcon) {
+      if (circleIcon.classList.contains("fa-circle")) {
+        circleIcon.classList.remove("fa-circle");
+        circleIcon.classList.add("fa-circle-check");
+      } else {
+        circleIcon.classList.remove("fa-circle-check");
+        circleIcon.classList.add("fa-circle");
+      }
+    }
 
-const editTask = (index) => {
-  // once clicked edit btn task will be added inside the input field so that it can be updated
-  taskInput.value = tasks[index].text;
-  // clear the task
-  tasks.splice(index, 1);
-  // once the task is updated it will add the task to the list
-  updateTasksList();
-  updateStats();
-  itemTotals();
-  saveTask();
-}
-
-// Progress Stats
-const updateStats = () => {
-  const completedTasks = tasks.filter(task => task.completed).length;
-  const totalTasks = tasks.length;
-  const progress = (completedTasks / totalTasks) * 100;
-
-  const progressBar = document.getElementById('progress');
-  progressBar.style.width = `${progress}%`
-
-  if(tasks.length && completedTasks === totalTasks){
-    blastConfetti();
-  }
-
-  document.getElementById('todoNumbers').innerText = `${completedTasks} / ${totalTasks}`;
-}
-
-deleteAllBtn.addEventListener('click', () => {
-  tasks = [];
-  updateTasksList();
-  updateStats();
-  itemTotals();
-  saveTask();
-})
-
-const itemTotals = () => {
-  const totalTasks = tasks.length;
-  document.getElementById('itemsCounter').innerText = `${totalTasks} `;
-}
-
-const updateTasksList = () => {
-  const taskList = document.getElementById('taskList');
-  taskList.innerHTML = '';
-
-  tasks.forEach((task, index) => {
-    const listItem = document.createElement('li');
-    const taskItemDiv = document.createElement('div');
-    taskItemDiv.classList.add('taskItem');
-
-    const taskDiv = document.createElement('div');
-    taskDiv.classList.add('task');
-    taskDiv.classList.toggle('completed', task.completed);
-
-    const checkboxImg = document.createElement('img');
-    checkboxImg.src = task.completed ? './Assets/todoImages/checked.png' : './Assets/todoImages/unchecked.png';
-    checkboxImg.classList.add('checkboxImg');
-
-    const taskText = document.createElement('span');
-    taskText.textContent = task.text;
-
-    taskDiv.appendChild(checkboxImg);
-    taskDiv.appendChild(taskText);
-
-    taskItemDiv.appendChild(taskDiv);
-
-    const editDeleteBtnDiv = document.createElement('div');
-    editDeleteBtnDiv.classList.add('editDeleteBtn');
-
-    const editButton = document.createElement('button');
-    editButton.classList.add('editTask');
-    editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-    editButton.addEventListener('click', () => editTask(index));
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('deleteTask');
-    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    deleteButton.addEventListener('click', () => deleteTask(index));
-
-    editDeleteBtnDiv.appendChild(editButton);
-    editDeleteBtnDiv.appendChild(deleteButton);
-
-    taskItemDiv.appendChild(editDeleteBtnDiv);
-
-    listItem.appendChild(taskItemDiv);
-
-    taskList.appendChild(listItem);
-
-    // Add event listener to taskItem div
-    taskDiv.addEventListener('click', () => toggleTaskComplete(index));
-  });
-}
-
-taskBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  addTask();
-});
-
-const blastConfetti = () => {
-  const count = 200,
-  defaults = {
-    origin: { y: 0.7 },
-  };
-
-function fire(particleRatio, opts) {
-  confetti(
-    Object.assign({}, defaults, opts, {
-      particleCount: Math.floor(count * particleRatio),
-    })
-  );
-}
-
-fire(0.25, {
-  spread: 26,
-  startVelocity: 55,
-});
-
-fire(0.2, {
-  spread: 60,
-});
-
-fire(0.35, {
-  spread: 100,
-  decay: 0.91,
-  scalar: 0.8,
-});
-
-fire(0.1, {
-  spread: 120,
-  startVelocity: 25,
-  decay: 0.92,
-  scalar: 1.2,
-});
-
-fire(0.1, {
-  spread: 120,
-  startVelocity: 45,
-});
-}
+    function toggleLineThrough(element) {
+      element.classList.toggle("checked");
+    }
 
 // Calculator Script
 
