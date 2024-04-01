@@ -1,59 +1,113 @@
 let input = document.getElementById("taskInput");
-    let btn_add = document.querySelector(".addTask");
-    let ul = document.getElementById("taskList");
+let btn_add = document.querySelector(".addTask");
+let ul = document.getElementById("taskList");
 
-    btn_add.addEventListener("click", addTask);
+btn_add.addEventListener("click", addTask);
+document.addEventListener("DOMContentLoaded", loadTasks);
 
-    function addTask() {
-      let taskText = input.value.trim();
-      if (taskText !== "") {
-        let li = document.createElement("li");
-        li.className = "task-item";
+function addTask() {
+  let taskText = input.value.trim();
+  if (taskText !== "") {
+    let li = document.createElement("li");
+    li.className = "task-item";
 
-        // Create circle icon
-        let circleIcon = document.createElement("i");
-        circleIcon.className = "fa-regular fa-circle circle";
-        circleIcon.addEventListener("click", function () {
-          li.classList.toggle("checked");
-          toggleCheckedIcon(circleIcon);
-          toggleLineThrough(taskTextNode);
-        });
-        li.appendChild(circleIcon);
+    // Create circle icon
+    let circleIcon = document.createElement("i");
+    circleIcon.className = "fa-regular fa-circle circle";
+    circleIcon.addEventListener("click", function () {
+      li.classList.toggle("checked");
+      toggleCheckedIcon(circleIcon);
+      toggleLineThrough(taskTextNode);
+      saveTasks();
+    });
+    li.appendChild(circleIcon);
 
-        // Add task text
-        let taskTextNode = document.createElement("span");
-        taskTextNode.className = "task-text";
-        taskTextNode.textContent = taskText;
-        li.appendChild(taskTextNode);
+    // Add task text
+    let taskTextNode = document.createElement("span");
+    taskTextNode.className = "task-text";
+    taskTextNode.textContent = taskText;
+    li.appendChild(taskTextNode);
 
-        // Add delete button
-        let deleteBtn = document.createElement("button");
-        deleteBtn.className = "delete-btn";
-        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-        deleteBtn.onclick = function () {
-          li.remove();
-        };
-        li.appendChild(deleteBtn);
+    // Add delete button
+    let deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    deleteBtn.onclick = function () {
+      li.remove();
+      saveTasks();
+    };
+    li.appendChild(deleteBtn);
 
-        ul.appendChild(li);
+    ul.appendChild(li);
 
-        input.value = "";
-      }
-    }
+    input.value = "";
 
-    function toggleCheckedIcon(circleIcon) {
-      if (circleIcon.classList.contains("fa-circle")) {
-        circleIcon.classList.remove("fa-circle");
-        circleIcon.classList.add("fa-circle-check");
-      } else {
-        circleIcon.classList.remove("fa-circle-check");
-        circleIcon.classList.add("fa-circle");
-      }
-    }
+    saveTasks();
+  }
+}
 
-    function toggleLineThrough(element) {
-      element.classList.toggle("checked");
-    }
+function toggleCheckedIcon(circleIcon) {
+  if (circleIcon.classList.contains("fa-circle")) {
+    circleIcon.classList.remove("fa-circle");
+    circleIcon.classList.add("fa-circle-check");
+  } else {
+    circleIcon.classList.remove("fa-circle-check");
+    circleIcon.classList.add("fa-circle");
+  }
+}
+
+function toggleLineThrough(element) {
+  element.classList.toggle("checked");
+}
+
+function saveTasks() {
+  let tasks = [];
+  document.querySelectorAll('.task-item').forEach(task => {
+    tasks.push({
+      text: task.querySelector('.task-text').textContent,
+      checked: task.classList.contains('checked')
+    });
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  let tasks = localStorage.getItem('tasks');
+  if (tasks) {
+    tasks = JSON.parse(tasks);
+    tasks.forEach(task => {
+      let li = document.createElement("li");
+      li.className = "task-item";
+
+      let circleIcon = document.createElement("i");
+      circleIcon.className = task.checked ? "fa-regular fa-circle-check circle" : "fa-regular fa-circle circle";
+      circleIcon.addEventListener("click", function () {
+        li.classList.toggle("checked");
+        toggleCheckedIcon(circleIcon);
+        toggleLineThrough(taskTextNode);
+        saveTasks();
+      });
+      li.appendChild(circleIcon);
+
+      let taskTextNode = document.createElement("span");
+      taskTextNode.className = "task-text";
+      taskTextNode.textContent = task.text;
+      li.appendChild(taskTextNode);
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-btn";
+      deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      deleteBtn.onclick = function () {
+        li.remove();
+        saveTasks();
+      };
+      li.appendChild(deleteBtn);
+
+      ul.appendChild(li);
+    });
+  }
+}
+
 
 // Calculator Script
 
